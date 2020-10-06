@@ -31,9 +31,8 @@ TODO
 TODO
 ----
 
-The project is managed by a trello board:
+The project is managed by a Azure DevOps board:
 
-https://trello.com/b/4XQ8tFlB/dba-tts
 
 License
 -------

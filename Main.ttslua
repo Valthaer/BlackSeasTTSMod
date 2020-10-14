@@ -1,11 +1,16 @@
 --[[ Lua code. See documentation: https://api.tabletopsimulator.com/ --]]
 
+-- In the global file of your game, simply add this line
+-- #include main
+-- Then, in Atom package settings, go to the TTS package and define the path
+-- to this folder. Since this main file already includes the others no further
+-- operation is required for scripts. The XML needs to be copied manually
+-- however.
+
+#include scripts/uievents
+
+
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print('Starting Black Seas!')
-end
-
---[[ The onUpdate event is called once per frame. --]]
-function onUpdate()
-   --[[ print('onUpdate loop!') --]]
+    print('Starting Black Seas 2!')
 end

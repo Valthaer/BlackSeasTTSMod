@@ -12,5 +12,5 @@
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
-    print('Starting Black Seas 2!')
+    print('Starting Black Seas!')
 end

@@ -9,9 +9,41 @@
 
 #include scripts/uievents
 #include scripts/log
+#include scripts/logic_spawn_fleet
+#include scripts/data/british_fleet
 
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
     print('Starting Black Seas!')
+    spawn_fleets()
+end
+
+function onChat(message, player)
+    if message == '!bs_help' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_help()
+        return false
+    end
+
+    if message == '!bs_debug' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        if g_debug_mode then
+            print_info('Disabling debug mode')
+            g_debug_mode = false
+        else
+            print_info('Enabling debug mode, will take effect in three seconds. Note, this will cause decreased performance.')
+            Wait.time(function() 
+                g_debug_mode = true
+                print_info('Debug mode ON')
+            end, 3)
+        end
+        return false
+    end
+
+    if str_starts_with(message, '!bs') then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_error('Command not recognized. Please, use !bs_help')
+    end
+    return true
 end

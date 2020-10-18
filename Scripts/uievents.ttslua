@@ -3,7 +3,8 @@ g_knots_movement = 3
 
 -- Updates the global that manages the number of paces moved by the other functions, and updates the UI
 function slider_knots_changed(player, value, id)
-    g_knots_movement = round_to_power(value, 1)
+    print_debug('value of slider knots: ' .. value) 
+    g_knots_movement = value
 
     -- It's undocumented, but changing the value of the button does not update
     -- the button_move_forward
@@ -11,14 +12,14 @@ function slider_knots_changed(player, value, id)
     -- change the value because it's the proper thing
     UI.setAttribute('button_move_forward', 'text', 'Move ' .. g_knots_movement .. ' knots')
     UI.setValue('button_move_forward', 'Move ' .. g_knots_movement .. ' knots')
-
+    
     -- Make it consistent for all players
     Wait.frames(function()
         UI.setAttribute('slider_knots', 'value', value)
     end, 1)
 
     -- Update any gizmo
-    draw_gizmo_future_movements(player.getSelectedObjects())
+    --draw_gizmo_future_movements(player.getSelectedObjects())
 end
 
 function move_forward(player, value, id)

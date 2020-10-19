@@ -17,6 +17,7 @@
 function onLoad()
     print('Starting Black Seas!')
     spawn_fleets()
+    g_debug_mode = true
 end
 
 function onChat(message, player)

@@ -15,11 +15,8 @@
             <Button id="button_yellow_turn_right" onClick="on_yellow_turn_right">Yellow Right</Button>
         </HorizontalLayout>
         <Button id="button_fire" onClick="on_fire">Fire</Button>
-        <HorizontalLayout>
-            <Button id="button_undo_move" onClick="on_undo_move">Undo</Button>
-            <Button id="button_redo_move" onClick="on_redo_move">Redo</Button>
-        </HorizontalLayout>
         <Panel id="spacer" height="0"/>
+        <Button id="button_deploy_fleet" onClick="deploy_fleet">Deploy a Fleet</Button>     
         <Panel id="spacer2" height="0"/>
         <!--<Button id="button_spawn_table" onClick="on_create_table_menu">Spawn table</Button>
         <Button id="button_create_army" onClick="create_army_options_menu">Deploy an army</Button>
@@ -53,3 +50,131 @@
         <Text id="text_dead_red" ignoreLayout="true" fontSize="56" position="205 -10" color="#A0081F">0</Text>
     </HorizontalLayout>
 </Panel>-->
+
+<Panel id="panel_bs_fleet_selection_bg" width="600" height="500" rectAlignment="MiddleCenter" active="false" raycastTarget="true">
+    <Image image="BS_BTT_MENU_GIRO"></Image>
+</Panel>
+<Panel id="panel_bs_fleet_selection" width="600" height="500" rectAlignment="MiddleCenter" color="#00000000" active="false" raycastTarget="true">
+    <TableLayout padding="30 30 30 30 " cellSpacing="20">        
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">Nation:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_book" fontSize="16">
+                    <Option selected="true">Britain</Option>
+                    <Option>Dutch</Option>
+                    <Option>France</Option>
+                    <Option>Spain</Option>
+                    <Option>United States of America</Option>                    
+                </Dropdown>
+            </Cell>
+        </Row>
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">First Rates:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_1st" fontSize="16" scrollSensitivity="20">
+                    <Option selected="true">1</Option>
+                    <Option>2</Option>
+                    <Option>3</Option>
+                    <Option>4</Option>
+                    <Option>5</Option>
+                    <Option>6</Option>
+                    <Option>7</Option>
+                    <Option>8</Option>
+                </Dropdown>
+            </Cell>
+        </Row>
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">Third Rates:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_3th" fontSize="16" scrollSensitivity="20">
+                    <Option selected="true">1</Option>
+                    <Option>2</Option>
+                    <Option>3</Option>
+                    <Option>4</Option>
+                    <Option>5</Option>
+                    <Option>6</Option>
+                    <Option>7</Option>
+                    <Option>8</Option>
+                </Dropdown>
+            </Cell>
+        </Row>
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">Frigates:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_frigates" fontSize="16" scrollSensitivity="20">
+                    <Option selected="true">1</Option>
+                    <Option>2</Option>
+                    <Option>3</Option>
+                    <Option>4</Option>
+                    <Option>5</Option>
+                    <Option>6</Option>
+                    <Option>7</Option>
+                    <Option>8</Option>
+                </Dropdown>
+            </Cell>
+        </Row>
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">Brigs:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_brigs" fontSize="16" scrollSensitivity="20">
+                    <Option selected="true">1</Option>
+                    <Option>2</Option>
+                    <Option>3</Option>
+                    <Option>4</Option>
+                    <Option>5</Option>
+                    <Option>6</Option>
+                    <Option>7</Option>
+                    <Option>8</Option>
+                </Dropdown>
+            </Cell>
+        </Row>
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">Player:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_playercolor" onValueChanged="on_color_selected" fontSize="16">
+                    <Option selected="true">Blue</Option>
+                    <Option>Red</Option>
+                </Dropdown>
+            </Cell>
+        </Row>
+        <Row preferredHeight="36">
+            <Cell columnSpan="6" dontUseTableCellBackground="true">
+                <Text fontSize="18" alignment="MiddleLeft">Color:</Text>
+            </Cell>
+            <Cell columnSpan="14" dontUseTableCellBackground="true">
+                <Dropdown id="dropdown_command" onValueChanged="on_command_selected" fontSize="16">
+                    <Option selected="true">None</Option>                    
+                    <Option>Blue</Option>
+                    <Option>Red</Option>
+                    <Option>Orange</Option>
+                    <Option>Yellow</Option>
+                    <Option>Green</Option>
+                    <Option>Purple</Option>
+                </Dropdown>
+            </Cell>
+        </Row> 
+        <Row preferredHeight="40">
+            <Cell columnSpan="5" dontUseTableCellBackground="true">
+                <Button columnSpan="2" fontSize="18" onClick="on_cancel_deploy_fleet">Cancel</Button>
+            </Cell>
+            <Cell columnSpan="11" dontUseTableCellBackground="true">
+                <!-- Filler -->
+            </Cell>
+            <Cell columnSpan="4" dontUseTableCellBackground="true">
+                <Button columnSpan="1" fontSize="18" onClick="on_deploy_fleet">Deploy</Button>
+            </Cell>
+        </Row>
+    </TableLayout>
+</Panel>

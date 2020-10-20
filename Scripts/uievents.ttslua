@@ -1,5 +1,6 @@
 -- Global number of paces moved
 g_knots_movement = 3
+g_fleet_selected = ''
 
 -- Updates the global that manages the number of paces moved by the other functions, and updates the UI
 function slider_knots_changed(player, value, id)
@@ -66,4 +67,33 @@ function filter_ships(list)
         end
     end
     return filtered
+end
+
+function deploy_fleet(player, value, id)
+    local status = UI.getAttribute('panel_bs_fleet_selection', 'active')
+    if status == 'True' then
+        -- Ignore, the user is clicking despite the menu already being there
+        return
+    end
+
+    --local book, army = get_initial_army()
+    print_debug('Selected fleet is ' .. g_fleet_selected)    
+
+    --update_book_menu(1)
+    on_next_frame(function()        
+        UI.setAttribute('panel_bs_fleet_selection_bg', 'active', true)
+        UI.setAttribute('panel_bs_fleet_selection_bg', 'visibility', player.color)
+        UI.setAttribute('panel_bs_fleet_selection', 'active', true)
+        UI.setAttribute('panel_bs_fleet_selection', 'visibility', player.color)
+        UI.setAttribute('button_deploy_fleet', 'interactable', false)
+      --  on_next_frame(function()
+            --update_armies_menu(book, 1)
+        --    on_next_frame(function()
+                --update_authors_text(army)
+          --      on_next_frame(function()
+                    --update_player_color_menu(g_color_spawn_army_selected == 'Red')
+            --    end)
+        --    end)
+    --    end)
+    end)
 end

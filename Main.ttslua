@@ -10,6 +10,7 @@
 #include scripts/uievents
 #include scripts/log
 #include scripts/logic_spawn_fleet
+#include scripts/utilities_lua
 #include scripts/data/british_fleet
 
 

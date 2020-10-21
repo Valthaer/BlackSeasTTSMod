@@ -1,0 +1,45 @@
+newmtl ensigntex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+
+newmtl sailstex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+
+newmtl shiptex2
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+
+newmtl sogBaseTex
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.805 0.805 0.805
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/SOG/Bases/b_commercedebordeaux.jpg
+

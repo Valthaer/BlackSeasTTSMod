@@ -1,0 +1,83 @@
+newmtl brown
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/brown.jpg
+
+newmtl Default
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl ensigntex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/ensign_USA.jpg
+
+newmtl Material_1
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/Frigate_32_gun_USA.jpg
+
+newmtl rigging
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/rigging.jpg
+
+newmtl sailstex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/sails_USA.jpg
+
+newmtl sogBaseTex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/Bases/b_uss_enterprise.jpg
+

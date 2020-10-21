@@ -1,0 +1,17 @@
+
+function move_ship(ship,knots_movement)
+
+    local move = {}
+    for _,obj in ipairs(ship) do
+        local initial_transform = calculate_transform(obj)
+        local moved_knots = move_base(obj, knots_movement, true)
+        local new_transform = calculate_transform(obj)
+        add_transform_to_move(move, obj.getName(), initial_transform, new_transform)
+
+        print_info(player.steam_name .. ' is moving ' .. obj.getName() .. ' ' .. moved_knots .. ' knots forward')
+    end
+    --push_to_history_stack(move)
+
+    -- Moving the bases should imply update the gizmos
+    --draw_gizmo_future_movements(player.getSelectedObjects())
+end

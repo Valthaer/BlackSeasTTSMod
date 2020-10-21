@@ -1,0 +1,46 @@
+newmtl ensign
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl flagtex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+
+newmtl frigateTex
+Kd 0.752941 0.752941 0.752941
+Ke 0 0 0
+Ka 0.905 0.905 0.905
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/myAssets/BOATS/Frigate/frigate.jpg
+
+newmtl sailsTex
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.9 0.9 0.9
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/myAssets/BOATS/Frigate/frigate.jpg
+

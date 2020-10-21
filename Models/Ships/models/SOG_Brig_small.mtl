@@ -1,0 +1,59 @@
+newmtl ensigntex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/ensign.jpg
+
+newmtl sail2tex
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/sails.jpg
+
+newmtl sailstex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/sails.jpg
+
+newmtl shiptex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/brighull_E.jpg
+
+newmtl sogBaseTex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+

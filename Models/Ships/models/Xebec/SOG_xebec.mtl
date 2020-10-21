@@ -1,0 +1,59 @@
+newmtl Default
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Material_1
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/myAssets/BOATS/Xebec/sog_xebec.jpg
+
+newmtl sogBaseTex
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.805 0.805 0.805
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/myAssets/BOATS/Xebec/b_barbary.jpg
+
+newmtl xebsails
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.81 0.81 0.81
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/myAssets/BOATS/Xebec/sog_xebec.jpg
+
+newmtl xebTex
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.98 0.98 0.98
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/myAssets/BOATS/Xebec/xebec.jpg
+

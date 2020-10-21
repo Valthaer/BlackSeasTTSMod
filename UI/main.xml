@@ -5,14 +5,26 @@
 <Panel id="panel_ship_orders" width="230" height="400" color="#00000000" rectAlignment="MiddleRight" padding="30 30 30 30" raycastTarget="true">
     <VerticalLayout>
         <Slider id="slider_knots" minValue="0" maxValue="6" wholeNumbers="true" value="3" colors="#00000000|#00000000|#00000000|#00000000" backgroundcolor="#FFFFFFF" onValueChanged="slider_knots_changed"></Slider>
-        <Button id="button_move_forward" onClick="move_forward">Move 3 knots</Button>
+        <Button id="button_move_forward" onClick="move_forward">Move 3 knots</Button>    
         <HorizontalLayout>
-            <Button id="button_red_turn_left" onClick="on_red_turn_left">Red Left</Button>
-            <Button id="button_red_turn_right" onClick="on_red_turn_right">Red Right</Button>
+            <Panel>
+                <Button id="button_red_turn_left" onClick="on_red_turn_left"></Button>
+                <Image image="R_LEFT" width="28" height="30"></Image>
+            </Panel>
+            <Panel>
+                <Button id="button_red_turn_right" onClick="on_red_turn_right"></Button>
+                <Image image="R_RIGHT" width="28" height="30"></Image>
+            </Panel> 
         </HorizontalLayout>
         <HorizontalLayout>
-            <Button id="button_yellow_turn_left" onClick="on_yellow_turn_left">Yellow Left</Button>
-            <Button id="button_yellow_turn_right" onClick="on_yellow_turn_right">Yellow Right</Button>
+            <Panel>
+                <Button id="button_yellow_turn_left" onClick="on_yellow_turn_left"></Button>
+                <Image image="Y_LEFT" width="28" height="30"></Image>
+            </Panel>
+            <Panel>
+                <Button id="button_yellow_turn_right" onClick="on_yellow_turn_right"></Button>
+                <Image image="Y_RIGHT" width="28" height="30"></Image>
+            </Panel>            
         </HorizontalLayout>
         <Button id="button_fire" onClick="on_fire">Fire</Button>
         <Panel id="spacer" height="0"/>
@@ -52,7 +64,7 @@
 </Panel>-->
 
 <Panel id="panel_bs_fleet_selection_bg" width="600" height="500" rectAlignment="MiddleCenter" active="false" raycastTarget="true">
-    <Image image="BS_BTT_MENU_GIRO"></Image>
+    <Image image="BS_BTS_PANEL_FLOTAS"></Image>
 </Panel>
 <Panel id="panel_bs_fleet_selection" width="600" height="500" rectAlignment="MiddleCenter" color="#00000000" active="false" raycastTarget="true">
     <TableLayout padding="30 30 30 30 " cellSpacing="20">        
@@ -61,7 +73,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">Nation:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_book" fontSize="16">
+                <Dropdown id="dropdown_nation" onValueChanged="on_nation_selected" fontSize="16">
                     <Option selected="true">Britain</Option>
                     <Option>Dutch</Option>
                     <Option>France</Option>
@@ -75,7 +87,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">First Rates:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_1st" fontSize="16" scrollSensitivity="20">
+                <Dropdown id="dropdown_1st" onValueChanged="on_first_rate_selected" fontSize="16" scrollSensitivity="20">
                     <Option selected="true">1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
@@ -92,7 +104,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">Third Rates:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_3th" fontSize="16" scrollSensitivity="20">
+                <Dropdown id="dropdown_3th" onValueChanged="on_third_rate_selected" fontSize="16" scrollSensitivity="20">
                     <Option selected="true">1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
@@ -109,7 +121,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">Frigates:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_frigates" fontSize="16" scrollSensitivity="20">
+                <Dropdown id="dropdown_frigates" onValueChanged="on_frigates_selected" fontSize="16" scrollSensitivity="20">
                     <Option selected="true">1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
@@ -126,7 +138,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">Brigs:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_brigs" fontSize="16" scrollSensitivity="20">
+                <Dropdown id="dropdown_brigs" onValueChanged="on_brigs_selected" fontSize="16" scrollSensitivity="20">
                     <Option selected="true">1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
@@ -143,7 +155,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">Player:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_playercolor" onValueChanged="on_color_selected" fontSize="16">
+                <Dropdown id="dropdown_playercolor" onValueChanged="on_player_color_selected" fontSize="16">
                     <Option selected="true">Blue</Option>
                     <Option>Red</Option>
                 </Dropdown>
@@ -154,7 +166,7 @@
                 <Text fontSize="18" alignment="MiddleLeft">Color:</Text>
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
-                <Dropdown id="dropdown_command" onValueChanged="on_command_selected" fontSize="16">
+                <Dropdown id="dropdown_command_color" onValueChanged="on_command_color_selected" fontSize="16">
                     <Option selected="true">None</Option>                    
                     <Option>Blue</Option>
                     <Option>Red</Option>

@@ -1,0 +1,48 @@
+newmtl Material_1
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/castlewalls_arthur.jpg
+
+newmtl Material_2
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/wall_dirtyconcrete.jpg
+
+newmtl Material_3
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/dirt_seamless.jpg
+
+newmtl Material_4
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/metall005-new.png
+

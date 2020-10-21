@@ -1,0 +1,48 @@
+newmtl Material_1
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.445 0.445 0.445
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/4th_Rate_50_Gun.jpg
+
+newmtl sailstex
+Kd 1 1 1
+Ke 0 0 0
+Ka 0.655 0.655 0.655
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Documents/My Games/Tabletop Simulator/MYMODS/AOS/sails.jpg
+
+newmtl shiptex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Downloads/TTS_SOG/Assets/textures/3R_FRENCH_WHITE.jpg
+
+newmtl sogBaseTex
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.805 0.805 0.805
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/SOG/Bases/b_commercedebordeaux.jpg
+

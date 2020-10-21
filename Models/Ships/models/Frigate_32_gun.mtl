@@ -1,0 +1,48 @@
+newmtl ensigntex
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Documents/My Games/Tabletop Simulator/MYMODS/AOS/ensign.jpg
+
+newmtl Material_1
+Kd 0.2 0.2 0.2
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 1 1 1
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Pictures/SOG/Frigate_32_gun_english.jpg
+
+newmtl sailstex
+Kd 1 1 1
+Ke 0 0 0
+Ka 0.83 0.83 0.83
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Documents/My Games/Tabletop Simulator/MYMODS/AOS/sails.jpg
+
+newmtl sogBaseTex
+Kd 0 0 1
+Ke 0 0 0
+Ka 0.805 0.805 0.805
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+map_Kd C:Users/Ken/Documents/My Games/Tabletop Simulator/MYMODS/SOG/SOG_Base_British.jpg
+

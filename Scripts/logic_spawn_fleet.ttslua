@@ -153,3 +153,11 @@ function spawn_base(base, pos, y_rotation, is_red_player, command_color)
     base_obj.setRotation({0, y_rotation, 0})
     base_obj.auto_raise = false
 end
+
+function update_player_color_menu(is_player_blue)
+    local selected = 1
+    if is_player_blue then
+        selected = 2
+    end
+    set_options_dropdown_by_id('dropdown_playercolor', { 'Red', 'Blue' },  selected)
+end

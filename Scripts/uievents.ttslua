@@ -153,5 +153,5 @@ function on_deploy_fleet(player, value, id)
     print_debug('Player Color: ' .. g_player_color_selected)  
     print_debug('Command color: ' .. g_command_color_selected)  
 
-    --spawn_fleet(g_nation_selected, g_first_rates_selected, g_third_rates_selected, g_frigates_rates_selected,g_brigs_rates_selected,g_player_color_selected,g_command_color_selected)
+    spawn_fleet(g_nation_selected, g_first_rates_selected, g_third_rates_selected, g_frigates_rates_selected,g_brigs_rates_selected,g_player_color_selected,g_command_color_selected)
 end

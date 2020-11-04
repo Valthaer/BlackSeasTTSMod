@@ -12,6 +12,7 @@
 #include scripts/logic_spawn_fleet
 #include scripts/logic_movements
 #include scripts/utilities_lua
+#include scripts/data/data_settings
 #include scripts/data/british_fleet
 
 --[[ The onLoad event is called after the game save finishes loading. --]]

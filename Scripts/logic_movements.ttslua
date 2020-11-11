@@ -1,26 +1,26 @@
 
-function move_ship(ship, knots_movement)
+function move_ship_obj(ship, how_much)
+    local current_transform = calculate_transform(ship)
+    local future_transform = calculate_future_position(current_transform, how_much)
 
-    local move = {}
-    for _,obj in ipairs(ship) do
-        local initial_transform = calculate_transform(obj)
-        local moved_knots = move_base(obj, knots_movement, true)
-        local new_transform = calculate_transform(obj)
-        add_transform_to_move(move, obj.getName(), initial_transform, new_transform)
-
-        print_info(player.steam_name .. ' is moving ' .. obj.getName() .. ' ' .. moved_knots .. ' knots forward')
-    end
-    --push_to_history_stack(move)
-
-    -- Moving the bases should imply update the gizmos
-    --draw_gizmo_future_movements(player.getSelectedObjects())
+    apply_transform_obj(ship, current_transform, future_transform)
 end
 
+function move_ship()
+    local ships = g_state['ship_objs_selected']
+
+    if tlen(ships) ~= 1 then
+        print_error('Cannot move more than one ship')
+        return
+    end
+
+    move_ship_obj(ships[1], g_knots_movement)
+    update_ship_preview()
+end
 
 function calculate_future_position(transform, movement_units)
     local displacement_vector = rad_to_vector(transform['rotation'])
     local destination = vec_add(transform['position'], vec_mul_escalar(displacement_vector, movement_units))
-    log(destination)
     local corners = compute_corners_coords(transform['size'], transform['rotation'], destination)
 
     return get_transform(
@@ -31,9 +31,9 @@ function calculate_future_position(transform, movement_units)
     )
 end
 
-function preview_move_ship(ship)
+function preview_move_ship(ship, how_much)
     local current_transform = calculate_transform(ship)
-    local future_transform = calculate_future_position(current_transform, g_knots_movement)
+    local future_transform = calculate_future_position(current_transform, how_much)
 
     local strokes = {}
     table.insert(strokes, get_strokes_transform(future_transform))
@@ -52,5 +52,5 @@ function update_ship_preview()
         return
     end
 
-    preview_move_ship(ships[1])
+    preview_move_ship(ships[1], g_knots_movement)
 end

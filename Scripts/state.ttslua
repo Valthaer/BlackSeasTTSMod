@@ -6,6 +6,10 @@ function init_state()
     g_state['ship_objs_selected'] = {}
 end
 
+function how_many_ships_selected()
+    return tlen(g_state['ship_objs_selected'])
+end
+
 -- Recalculates g_state['ship_objs_selected'], returns true if there's a change
 function calculate_ship_objs_selected()
     local ships = {}
@@ -96,5 +100,19 @@ function get_strokes_transform(transform)
         color     = color,
         thickness = g_line_thickness,
         rotation  = {0,0,0}
+    }
+end
+
+function apply_transform_obj(obj, old_transform, new_transform)
+    obj.setPosition(new_transform['position'])
+    obj.setRotation(transform_to_rotation_vector(new_transform))
+end
+
+function transform_to_rotation_vector(transform)
+    -- The normalization of a normalized is the original
+    return {
+        x = 0,
+        y = math.deg(normalize_angle(transform['rotation'])),
+        z = 0
     }
 end

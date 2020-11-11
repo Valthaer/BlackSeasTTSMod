@@ -38,17 +38,12 @@ function on_redo_move(player, value, id)
 end
 
 function move_forward(player, value, id)
-    print_debug('player ' .. player.steam_name)
-    print_debug('player move forward ' .. g_knots_movement)
-
-    local objs = filter_ships(player.getSelectedObjects())
-
-    if tlen(objs) < 1 then
-        print_error(player.steam_name ..' is trying to move ' .. g_knots_movement .. ' knots, but (s)he has no object selected, ignoring')
-    return
+    if how_many_ships_selected() ~= 1 then
+        print_error(player.steam_name .. ' is trying to move a ship, but (s)he has no object selected, or more than one, ignoring')
+        return
     end
 
-    --move_ship(objs,g_knots_movement)
+    move_ship()
 end
 
 function deploy_fleet(player, value, id)

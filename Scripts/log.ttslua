@@ -24,7 +24,6 @@ end
 -- Messages that can be seen by everyone on the textbox and indicate
 -- that the user may be doing something wrong
 function print_error(msg)
-    printToAll('[ERROR] ' .. msg, red)
     broadcastToAll('[ERROR] ' .. msg, red)
 end
 

@@ -8,6 +8,10 @@ g_nation_selected = 0
 g_player_color_selected = 'Blue'
 g_command_color_selected = 'Blue'
 
+g_current_turn_orientation = 'left'
+g_player_turning = false
+g_turn_degrees = 15
+
 -- Updates the global that manages the number of paces moved by the other functions, and updates the UI
 function slider_knots_changed(player, value, id)
     print_debug('value of slider knots: ' .. value) 
@@ -37,7 +41,7 @@ function on_redo_move(player, value, id)
     --go_forward_history_stack()
 end
 
-function move_forward(player, value, id)
+function on_move_forward(player, value, id)
     if how_many_ships_selected() ~= 1 then
         print_error(player.steam_name .. ' is trying to move a ship, but (s)he has no object selected, or more than one, ignoring')
         return
@@ -45,6 +49,95 @@ function move_forward(player, value, id)
 
     move_ship()
 end
+
+function on_turn_ship(player, value, id)
+    if how_many_ships_selected() ~= 1 then
+        print_error(player.steam_name .. ' is trying to turn a ship, but (s)he has no object selected, or more than one, ignoring')
+        return
+    end
+
+    g_player_turning = true
+    on_rotation_turn_ui(15)
+    on_change_orientation_turn_ui('left')
+
+    UI.setAttribute('panel_turn_bg', 'active', true)
+    UI.setAttribute('panel_turn', 'active', true)
+    UI.setAttribute('button_move_forward', 'interactable', false)
+    UI.setAttribute('button_turn', 'interactable', false)
+end
+
+function preview_turn()
+    if g_current_turn_orientation == 'left' then
+        UI.setValue('text_turn',
+            string.format('Turning the ship %2.1f degrees to port', g_turn_degrees))
+    else
+        UI.setValue('text_turn',
+            string.format('Turning the ship %2.1f degrees to starboard', g_turn_degrees))
+    end
+    update_preview_turn()
+end
+
+function on_rotation_turn(player, value, id)
+    on_rotation_turn_ui(value)
+    preview_turn()
+end
+
+function on_rotation_turn_ui(value)
+    g_turn_degrees = value
+    Wait.frames(function()
+        UI.setAttribute('slider_turn_rotation', 'value', value)
+    end, 1)
+end
+
+function from_toggle_number_to_orientation(value)
+    -- Must follow the order of the toggles on main.xml
+    if value == 0 then
+        return 'left'
+    elseif value == 1 then
+        return 'right'
+    else
+        return 'Error'
+    end
+end
+
+function on_change_orientation_turn(player, value, id, ignore_preview)
+    on_change_orientation_turn_ui(from_toggle_number_to_orientation(tonumber(value)))
+    preview_turn()
+end
+
+function on_change_orientation_turn_ui(value)
+    g_current_turn_orientation = value
+    if value == 'left' then
+        Wait.frames(function()
+            UI.setAttribute('toggle_turn_left', 'isOn', true)
+        end, 1)
+    else
+        Wait.frames(function()
+            UI.setAttribute('toggle_turn_right', 'isOn', true)
+        end, 1)
+    end
+end
+
+function on_make_turn(player, value, id)
+    perform_turn()
+    remove_turn_screen()
+end
+
+function on_cancel_turn(player, value, id)
+    remove_turn_screen()
+end
+
+function remove_turn_screen()
+    g_player_turning = false
+
+    UI.setAttribute('panel_turn_bg', 'active', false)
+    UI.setAttribute('panel_turn', 'active', false)
+    UI.setAttribute('button_move_forward', 'interactable', true)
+    UI.setAttribute('button_turn', 'interactable', true)
+
+    Global.setVectorLines({})
+end
+
 
 function deploy_fleet(player, value, id)
     local status = UI.getAttribute('panel_bs_fleet_selection', 'active')

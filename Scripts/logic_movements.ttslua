@@ -54,3 +54,45 @@ function update_ship_preview()
 
     preview_move_ship(ships[1], g_knots_movement)
 end
+
+function calculate_transform_after_turn(transform, corner_reference, angle, is_left)
+    local new_angle = positive_angle(transform['rotation'] + angle)
+    local effective_angle = angle
+    if not is_left then
+        new_angle = positive_angle(transform['rotation'] - angle)
+        effective_angle = -angle
+    end
+    
+    local reference_point = transform['corners'][corner_reference]
+    local new_pos = rotate_point(transform['position'], reference_point, effective_angle)
+    local new_corners = compute_corners_coords(transform['size'], new_angle, new_pos)
+
+    return get_transform(
+        new_pos,
+        new_corners,
+        new_angle,
+        transform['size']
+    )
+end
+
+function preview_turn_ship(ship, how_many_degrees, direction)
+    local current_transform = calculate_transform(ship)
+    local future_transform = calculate_transform_after_turn(
+        current_transform, 'stern', math.rad(how_many_degrees), direction == 'left')
+
+    local strokes = {}
+    table.insert(strokes, get_strokes_transform(future_transform))
+    Global.setVectorLines(strokes)
+end
+
+
+function update_preview_turn()
+    local ships = g_state['ship_objs_selected']
+
+    if tlen(ships) ~= 1 then
+        clear_preview_ship()
+        return
+    end
+
+    preview_turn_ship(ships[1], g_turn_degrees, g_current_turn_orientation)
+end

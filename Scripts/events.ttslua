@@ -1,3 +1,32 @@
+
+function onObjectSpawn(new_obj)
+    local name = new_obj.getName()
+    local my_guid = new_obj.getGUID()
+    if name ~= nil and str_starts_with(name, "Ship") then
+        -- Check if the name as an old one
+        local all_objs = getAllObjects()
+        local bases = filter_ships(all_objs)
+        local found_ship = nil
+        for _,ship in ipairs(bases) do
+            if ship.getName() == name and ship.getGUID() ~= my_guid then
+                found_ship = ship
+                break
+            end
+        end
+
+        if found_ship ~= nil then
+            on_clone(found_ship, new_obj)
+        end
+    end
+end
+
+function on_clone(source_obj, new_obj)
+    local name = source_obj.getName()
+    print_info(name .. " has been duplicated.")
+    local new_name = name .. " clone " .. new_obj.getGUID()
+    new_obj.setName(new_name)
+end
+
 function check_selection_change()
     local changed = calculate_ship_objs_selected()
     if changed then

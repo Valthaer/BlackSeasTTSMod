@@ -10,20 +10,6 @@ function add_context_menu_table(table_obj)
     --Nothing to add
 end
 
-function on_clone(source_obj, new_obj)
-    local name = source_obj.getName()
-    print_info(name .. " has been duplicated.")
-    local new_name = name .. " clone " .. new_obj.getGUID()
-    new_obj.setName(new_name)
-    g_ships[new_name] = {
-        tile = g_ships[name]['tile'],
-        is_red_player = g_ships[name]['is_red_player']
-    }
-    new_obj.clearContextMenu()
-    add_context_menu_base(new_obj)
-
-end
-
 function spawn_fleets()
     --Blue Player
     local obj = spawnObject({

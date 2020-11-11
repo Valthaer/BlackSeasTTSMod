@@ -79,3 +79,22 @@ function get_transform(position, corners, rotation, size)
         size = size
     }
 end
+
+function get_strokes_transform(transform)
+    local stroke_points = {}
+    table.insert(stroke_points, transform['corners']['topright'])
+    table.insert(stroke_points, transform['corners']['topleft'])
+    table.insert(stroke_points, transform['corners']['botleft'])
+    table.insert(stroke_points, transform['corners']['botright'])
+    table.insert(stroke_points, transform['corners']['topright'])
+
+    local color = { 0.9, 0.1, 0.1 }
+
+    return
+    {
+        points    = stroke_points,
+        color     = color,
+        thickness = g_line_thickness,
+        rotation  = {0,0,0}
+    }
+end

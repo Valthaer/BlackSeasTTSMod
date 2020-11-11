@@ -39,6 +39,25 @@ function on_ship_selection_changed()
 end
 
 
+function onObjectPickUp(player_color,  picked_up_object)
+    if not str_starts_with(picked_up_object.getName(), "Ship") then
+        return
+    end
+
+    print_warning('Player has picked ship ' .. picked_up_object.getName() .. ' at position ' .. vec_to_str(picked_up_object.getPosition()) 
+        .. '. Please use the movement tools instead.')
+end
+
+
+function onObjectDrop(player_color,  picked_up_object)
+    if not str_starts_with(picked_up_object.getName(), "Ship") then
+        return
+    end
+    
+    picked_up_object.setVelocity({x=0, y=0, z=0})
+    picked_up_object.setAngularVelocity({x=0, y=0, z=0})
+    update_ship_preview()
+end
 
 function onChat(message, player)
     if message == '!bs_debug' then

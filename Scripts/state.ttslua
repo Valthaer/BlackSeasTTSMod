@@ -1,0 +1,43 @@
+g_state = {}
+
+function init_state()
+    g_state['ships'] = {}
+    g_state['ship_index'] = 0
+    g_state['ship_objs_selected'] = {}
+end
+
+-- Recalculates g_state['ship_objs_selected'], returns true if there's a change
+function calculate_ship_objs_selected()
+    local ships = {}
+    local players = Player.getPlayers()
+    for _, player in ipairs(players) do
+        local selected_objs = player.getSelectedObjects()
+        if selected_objs ~= nil then
+            array_concat(ships, filter_ships(selected_objs))
+        end
+    end
+
+    local are_the_same = array_equals(ships, g_state['ship_objs_selected'],
+        function(obj1, obj2)
+            return obj1.guid == obj2.guid
+        end)
+
+    if are_the_same then
+        return false
+    end
+    g_state['ship_objs_selected'] = ships
+    return true
+end
+
+-- Given a list of objects in a table, returns another table with ONLY
+-- those who start with 'Ship', ignoring the keys
+function filter_ships(list)
+    local filtered = {}
+    for _,obj in ipairs(list) do
+        local name = obj.getName()
+        if g_ships[name] ~= nil or str_starts_with(obj.getName(), 'Ship') then
+            table.insert(filtered, obj)
+        end
+    end
+    return filtered
+end

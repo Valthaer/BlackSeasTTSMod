@@ -1,0 +1,39 @@
+function check_selection_change()
+    local changed = calculate_ship_objs_selected()
+    if changed then
+        on_ship_selection_changed()
+    end
+end
+
+function on_ship_selection_changed()
+    update_ship_preview()
+end
+
+function onChat(message, player)
+    if message == '!bs_help' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_help()
+        return false
+    end
+
+    if message == '!bs_debug' then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        if g_debug_mode then
+            print_info('Disabling debug mode')
+            g_debug_mode = false
+        else
+            print_info('Enabling debug mode, will take effect in three seconds. Note, this will cause decreased performance.')
+            Wait.time(function() 
+                g_debug_mode = true
+                print_info('Debug mode ON')
+            end, 3)
+        end
+        return false
+    end
+
+    if str_starts_with(message, '!bs') then
+        print_info(player.get_steam_name() .. ': ' .. message)
+        print_error('Command not recognized. Please, use !bs_help')
+    end
+    return true
+end

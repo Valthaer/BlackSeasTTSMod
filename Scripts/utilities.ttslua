@@ -339,18 +339,3 @@ function random_point_ellipse(w, h, added_from_center)
         z = random_radius * math.sin(random_theta)
     }
 end
-
-
--- Given a list of objects in a table, returns another table with ONLY
--- those who start with 'base', ignoring the keys
-function filter_ships(list)
-    local filtered = {}
-    for _,obj in ipairs(list) do
-        local name = obj.getName()
-        print_debug('ship name in filter: ' .. name)
-        if g_ships[name] ~= nil or str_starts_with(obj.getName(), 'Ship') then
-            table.insert(filtered, obj)
-        end
-    end
-    return filtered
-end

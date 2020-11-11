@@ -1,4 +1,4 @@
--- Global number of paces moved
+-- UI state globals
 g_knots_movement = 3
 g_first_rates_selected = 0
 g_third_rates_selected = 0
@@ -26,7 +26,7 @@ function slider_knots_changed(player, value, id)
     end, 1)
 
     -- Update any gizmo
-    update_ship_preview(player.getSelectedObjects())
+    update_ship_preview()
 end
 
 function on_undo_move(player, value, id)

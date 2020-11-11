@@ -95,15 +95,15 @@ function preview_move_ship(ship)
     Global.setVectorLines(strokes)
 end
 
-function clear_preview()
+function clear_preview_ship()
     Global.setVectorLines({})
 end
 
-function update_ship_preview(selected_objects)
-    local ships = filter_ships(selected_objects)
+function update_ship_preview()
+    local ships = g_state['ship_objs_selected']
 
     if tlen(ships) ~= 1 then
-        clear_preview()
+        clear_preview_ship()
         return
     end
 

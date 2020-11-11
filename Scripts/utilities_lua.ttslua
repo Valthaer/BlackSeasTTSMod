@@ -105,6 +105,9 @@ end
 -- is useless. This computes that.
 -- Beware that this iterates the whole table and is therefore, perf intensive.
 function tlen(table)
+    if table == nil then
+        return 0
+    end
     local n = 0
     for _ in pairs(table) do n = n + 1 end
     return n

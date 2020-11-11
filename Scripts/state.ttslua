@@ -56,10 +56,14 @@ function compute_corners_coords(sizeXZ, rotationY, pos)
     local zhalf = sizeXZ['z'] / 2
 
     return {
-        topright = rotate_point_relative({x = xhalf, y = 0, z = zhalf}, pos, rotationY),
-        botright = rotate_point_relative({x = xhalf, y = 0, z =-zhalf}, pos, rotationY),
-        topleft  = rotate_point_relative({x =-xhalf, y = 0, z = zhalf}, pos, rotationY),
-        botleft  = rotate_point_relative({x =-xhalf, y = 0, z =-zhalf}, pos, rotationY)
+        bow       = rotate_point_relative({x =     0, y = 0, z = zhalf}, pos, rotationY),
+        starboard = rotate_point_relative({x = xhalf, y = 0, z =     0}, pos, rotationY),
+        topright  = rotate_point_relative({x = xhalf, y = 0, z = zhalf}, pos, rotationY),
+        botright  = rotate_point_relative({x = xhalf, y = 0, z =-zhalf}, pos, rotationY),
+        port      = rotate_point_relative({x =-xhalf, y = 0, z =     0}, pos, rotationY),
+        topleft   = rotate_point_relative({x =-xhalf, y = 0, z = zhalf}, pos, rotationY),
+        botleft   = rotate_point_relative({x =-xhalf, y = 0, z =-zhalf}, pos, rotationY),
+        stern     = rotate_point_relative({x =     0, y = 0, z =-zhalf}, pos, rotationY)
     }
 end
 

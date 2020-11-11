@@ -14,7 +14,6 @@ g_turn_degrees = 15
 
 -- Updates the global that manages the number of paces moved by the other functions, and updates the UI
 function slider_knots_changed(player, value, id)
-    print_debug('value of slider knots: ' .. value) 
     g_knots_movement = value
 
     -- It's undocumented, but changing the value of the button does not update

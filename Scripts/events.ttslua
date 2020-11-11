@@ -44,7 +44,8 @@ function onObjectPickUp(player_color,  picked_up_object)
         return
     end
 
-    print_warning('Player has picked ship ' .. picked_up_object.getName() .. ' at position ' .. vec_to_str(picked_up_object.getPosition()) 
+    print_warning('Player has picked ship ' .. picked_up_object.getName() 
+        .. ' at position ' .. vec_to_str(picked_up_object.getPosition()) 
         .. '. Please use the movement tools instead.')
 end
 

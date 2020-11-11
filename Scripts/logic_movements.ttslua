@@ -85,7 +85,6 @@ function preview_turn_ship(ship, how_many_degrees, direction)
     Global.setVectorLines(strokes)
 end
 
-
 function update_preview_turn()
     local ships = g_state['ship_objs_selected']
 
@@ -95,4 +94,23 @@ function update_preview_turn()
     end
 
     preview_turn_ship(ships[1], g_turn_degrees, g_current_turn_orientation)
+end
+
+function perform_turn_obj(ship, how_many_degrees, direction)
+    local current_transform = calculate_transform(ship)
+    local future_transform = calculate_transform_after_turn(
+        current_transform, 'stern', math.rad(how_many_degrees), direction == 'left')
+
+    apply_transform_obj(ship, current_transform, future_transform)
+end
+
+function perform_turn()
+    local ships = g_state['ship_objs_selected']
+
+    if tlen(ships) ~= 1 then
+        print_error('Cannot turn more than one ship')
+        return
+    end
+
+    perform_turn_obj(ships[1], g_turn_degrees, g_current_turn_orientation)
 end

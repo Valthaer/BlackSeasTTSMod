@@ -4,7 +4,7 @@
 
 <Panel id="panel_ship_orders" width="230" height="400" color="#00000000" rectAlignment="MiddleRight" padding="30 30 30 30" raycastTarget="true">
     <VerticalLayout>
-        <Slider id="slider_knots" minValue="0" maxValue="6" wholeNumbers="true" value="3" colors="#00000000|#00000000|#00000000|#00000000" backgroundcolor="#FFFFFFF" onValueChanged="slider_knots_changed"></Slider>
+        <Slider id="slider_knots" minValue="0" maxValue="10" wholeNumbers="true" value="3" colors="#00000000|#00000000|#00000000|#00000000" backgroundcolor="#FFFFFFF" onValueChanged="slider_knots_changed"></Slider>
         <Button id="button_move_forward" onClick="move_forward">Move 3 knots</Button>    
         <HorizontalLayout>
             <Panel>

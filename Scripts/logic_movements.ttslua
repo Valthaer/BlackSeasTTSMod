@@ -1,5 +1,5 @@
 
-function move_ship(ship,knots_movement)
+function move_ship(ship, knots_movement)
 
     local move = {}
     for _,obj in ipairs(ship) do
@@ -14,4 +14,98 @@ function move_ship(ship,knots_movement)
 
     -- Moving the bases should imply update the gizmos
     --draw_gizmo_future_movements(player.getSelectedObjects())
+end
+
+function get_size(obj)
+    return obj.getBoundsNormalized()['size']
+end
+
+function compute_corners_coords(sizeXZ, rotationY, pos)
+    local xhalf = sizeXZ['x'] / 2
+    local zhalf = sizeXZ['z'] / 2
+
+    return {
+        topright = rotate_point_relative({x = xhalf, y = 0, z = zhalf}, pos, rotationY),
+        botright = rotate_point_relative({x = xhalf, y = 0, z =-zhalf}, pos, rotationY),
+        topleft  = rotate_point_relative({x =-xhalf, y = 0, z = zhalf}, pos, rotationY),
+        botleft  = rotate_point_relative({x =-xhalf, y = 0, z =-zhalf}, pos, rotationY)
+    }
+end
+
+function calculate_transform(obj)
+    local _rotation = normalize_angle(math.rad(obj.getRotation()['y']))
+    local _position = obj.getPosition()
+    local _size = get_size(obj)
+    return {
+        position = _position,
+        corners = compute_corners_coords(_size, _rotation, _position),
+        rotation = _rotation,
+        size = _size
+    }
+end
+
+function get_transform(position, corners, rotation, size)
+    return {
+        position = position,
+        corners = corners,
+        rotation = rotation,
+        size = size
+    }
+end
+
+function calculate_future_position(transform, movement_units)
+    local displacement_vector = rad_to_vector(transform['rotation'])
+    local destination = vec_add(transform['position'], vec_mul_escalar(displacement_vector, movement_units))
+    log(destination)
+    local corners = compute_corners_coords(transform['size'], transform['rotation'], destination)
+
+    return get_transform(
+        destination,
+        corners,
+        transform['rotation'],
+        transform['size']
+    )
+end
+
+function get_strokes_transform(transform)
+    local stroke_points = {}
+    table.insert(stroke_points, transform['corners']['topright'])
+    table.insert(stroke_points, transform['corners']['topleft'])
+    table.insert(stroke_points, transform['corners']['botleft'])
+    table.insert(stroke_points, transform['corners']['botright'])
+    table.insert(stroke_points, transform['corners']['topright'])
+
+    local color = { 0.9, 0.1, 0.1 }
+
+    return
+    {
+        points    = stroke_points,
+        color     = color,
+        thickness = g_line_thickness,
+        rotation  = {0,0,0}
+    }
+end
+
+function preview_move_ship(ship)
+    local current_transform = calculate_transform(ship)
+    local future_transform = calculate_future_position(current_transform, g_knots_movement)
+
+    local strokes = {}
+    table.insert(strokes, get_strokes_transform(future_transform))
+    Global.setVectorLines(strokes)
+end
+
+function clear_preview()
+    Global.setVectorLines({})
+end
+
+function update_ship_preview(selected_objects)
+    local ships = filter_ships(selected_objects)
+
+    if tlen(ships) ~= 1 then
+        clear_preview()
+        return
+    end
+
+    preview_move_ship(ships[1])
 end

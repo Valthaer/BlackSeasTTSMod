@@ -154,14 +154,6 @@ function spawn_base(base, pos, y_rotation, is_red_player, command_color)
     base_obj.auto_raise = false
 end
 
-function update_player_color_menu(is_player_blue)
-    local selected = 1
-    if is_player_blue then
-        selected = 2
-    end
-    set_options_dropdown_by_id('dropdown_playercolor', { 'Red', 'Blue' },  selected)
-end
-
 function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected, frigates_rates_selected,brigs_rates_selected,is_blue_player,command_color)
     --function spawn_army(army_name, army, is_red_player, command_color)
     math.randomseed(os.time())
@@ -170,6 +162,4 @@ function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected
     if not is_blue_player then
         y_rotation = 180
     end
-
-
 end

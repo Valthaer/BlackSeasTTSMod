@@ -26,7 +26,7 @@ function slider_knots_changed(player, value, id)
     end, 1)
 
     -- Update any gizmo
-    --draw_gizmo_future_movements(player.getSelectedObjects())
+    update_ship_preview(player.getSelectedObjects())
 end
 
 function on_undo_move(player, value, id)
@@ -48,21 +48,7 @@ function move_forward(player, value, id)
     return
     end
 
-    move_ship(objs,g_knots_movement)
-end
-
--- Given a list of objects in a table, returns another table with ONLY
--- those who start with 'base', ignoring the keys
-function filter_ships(list)
-    local filtered = {}
-    for _,obj in ipairs(list) do
-        local name = obj.getName()
-        print_debug('ship name in filter: ' .. name)
-        if g_ships[name] ~= nil or str_starts_with(obj.getName(), 'Ship') then
-            table.insert(filtered, obj)
-        end
-    end
-    return filtered
+    --move_ship(objs,g_knots_movement)
 end
 
 function deploy_fleet(player, value, id)
@@ -154,4 +140,12 @@ function on_deploy_fleet(player, value, id)
     print_debug('Command color: ' .. g_command_color_selected)  
 
     spawn_fleet(g_nation_selected, g_first_rates_selected, g_third_rates_selected, g_frigates_rates_selected,g_brigs_rates_selected,g_player_color_selected,g_command_color_selected)
+end
+
+function update_player_color_menu(is_player_blue)
+    local selected = 1
+    if is_player_blue then
+        selected = 2
+    end
+    set_options_dropdown_by_id('dropdown_playercolor', { 'Red', 'Blue' },  selected)
 end

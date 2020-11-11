@@ -1,0 +1,20 @@
+{
+    "Lua.diagnostics.globals": [
+        "g_table_thickness",
+        "Player",
+        "Global",
+        "UI",
+        "startLuaCoroutine",
+        "self",
+        "spawnObject",
+        "Wait",
+        "printToAll",
+        "broadcastToAll",
+        "getAllObjects",
+        "getObjectFromGUID"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global",
+        "unused-function"
+    ]
+}

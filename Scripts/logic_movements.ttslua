@@ -16,42 +16,6 @@ function move_ship(ship, knots_movement)
     --draw_gizmo_future_movements(player.getSelectedObjects())
 end
 
-function get_size(obj)
-    return obj.getBoundsNormalized()['size']
-end
-
-function compute_corners_coords(sizeXZ, rotationY, pos)
-    local xhalf = sizeXZ['x'] / 2
-    local zhalf = sizeXZ['z'] / 2
-
-    return {
-        topright = rotate_point_relative({x = xhalf, y = 0, z = zhalf}, pos, rotationY),
-        botright = rotate_point_relative({x = xhalf, y = 0, z =-zhalf}, pos, rotationY),
-        topleft  = rotate_point_relative({x =-xhalf, y = 0, z = zhalf}, pos, rotationY),
-        botleft  = rotate_point_relative({x =-xhalf, y = 0, z =-zhalf}, pos, rotationY)
-    }
-end
-
-function calculate_transform(obj)
-    local _rotation = normalize_angle(math.rad(obj.getRotation()['y']))
-    local _position = obj.getPosition()
-    local _size = get_size(obj)
-    return {
-        position = _position,
-        corners = compute_corners_coords(_size, _rotation, _position),
-        rotation = _rotation,
-        size = _size
-    }
-end
-
-function get_transform(position, corners, rotation, size)
-    return {
-        position = position,
-        corners = corners,
-        rotation = rotation,
-        size = size
-    }
-end
 
 function calculate_future_position(transform, movement_units)
     local displacement_vector = rad_to_vector(transform['rotation'])

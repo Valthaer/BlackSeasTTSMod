@@ -4,7 +4,10 @@ g_base_width_inches = 2.5
 -- All bases have 16cm longitude
 g_base_long_inches = 6
 
-g_base_tabletop_y = 13 -- This is incorrect
+g_base_tabletop_y = 13 -- This is incorrect...
+
+-- How thick the lines for the gizmos are
+g_line_thickness = 0.05
 
 -- How frequently the main loop runs, in seconds
 g_seconds_main_loop = 0.5

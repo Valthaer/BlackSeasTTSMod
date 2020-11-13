@@ -106,7 +106,9 @@
                     <Option selected="true">Britain</Option>
                     <Option>Dutch</Option>
                     <Option>France</Option>
+                    <Option>Pirates</Option>
                     <Option>Spain</Option>
+                    <Option>Sweden</Option>
                     <Option>United States of America</Option>                    
                 </Dropdown>
             </Cell>
@@ -117,7 +119,8 @@
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
                 <Dropdown id="dropdown_1st" onValueChanged="on_first_rate_selected" fontSize="16" scrollSensitivity="20">
-                    <Option selected="true">1</Option>
+                    <Option selected="true">0</Option>
+                    <Option>1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
                     <Option>4</Option>
@@ -134,7 +137,8 @@
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
                 <Dropdown id="dropdown_3th" onValueChanged="on_third_rate_selected" fontSize="16" scrollSensitivity="20">
-                    <Option selected="true">1</Option>
+                    <Option selected="true">0</Option>
+                    <Option>1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
                     <Option>4</Option>
@@ -151,7 +155,8 @@
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
                 <Dropdown id="dropdown_frigates" onValueChanged="on_frigates_selected" fontSize="16" scrollSensitivity="20">
-                    <Option selected="true">1</Option>
+                    <Option selected="true">0</Option>
+                    <Option>1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
                     <Option>4</Option>
@@ -168,7 +173,8 @@
             </Cell>
             <Cell columnSpan="14" dontUseTableCellBackground="true">
                 <Dropdown id="dropdown_brigs" onValueChanged="on_brigs_selected" fontSize="16" scrollSensitivity="20">
-                    <Option selected="true">1</Option>
+                    <Option selected="true">0</Option>
+                    <Option>1</Option>
                     <Option>2</Option>
                     <Option>3</Option>
                     <Option>4</Option>

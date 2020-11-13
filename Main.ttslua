@@ -23,8 +23,7 @@ function onLoad()
     print_info('Black Seas TTS Mod v0.1 loading...')
     init_state()
     Wait.time(main_loop, g_seconds_main_loop, -1)
-
-    spawn_fleets()
+    
     g_debug_mode = true
     print_info('Black Seas TTS Mod loaded')
 end

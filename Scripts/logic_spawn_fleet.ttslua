@@ -10,26 +10,72 @@ function add_context_menu_table(table_obj)
     --Nothing to add
 end
 
-function spawn_fleets()
-    --Blue Player
-    local obj = spawnObject({
-        type = 'Custom_AssetBundle',
-        position = { x = -80, y = 13, z = -33},
-        rotation = { x = 0, y = 0, z = 0},
-        scale = { x = 1, y = 1, z = 1},
-        sound = false,
-        snap_to_grid = false
-     })
-     
-     obj.setCustomObject({
-        assetbundle = ship_data_british_1stRate['url']
-    })
-    obj.setName(ship_data_british_1stRate['name'] .. ' #' .. global_id_counter)
-    print_info('spawn obj' .. obj.getName())
-    global_id_counter = global_id_counter + 1
+function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected, frigates_rates_selected,brigs_rates_selected,player_color_selected,command_color)
+    --function spawn_army(army_name, army, is_red_player, command_color)
+    math.randomseed(os.time())
+    
+    if player_color_selected == 'Blue' then
+        is_blue_player = true
+    else 
+        is_blue_player = false
+    end
+
+    g_nationality = 'British'
+
+    local y_rotation = 0
+    if not is_blue_player == true then
+        y_rotation = 180
+    end
+
+    if nation_selected == 'Britain' then
+        g_nationality = 'British'
+    elseif nation_selected == 'France' then
+        g_nationality = 'French'
+    end
+    --TODO complete all nationalities
+
+
+    print_debug('Deploying 1st Rates: ' .. first_rates_selected)  
+    if first_rates_selected == '1' then
+        spawn_ship(g_nationality,"1stRate",y_rotation,is_blue_player,command_color)
+        --TODO
+    end
+
 end
 
---TODO
+function spawn_ship(g_nationality,class,y_rotation,is_blue_player,command_color)
+
+    if is_blue_player == true then
+        x_position = g_spawn_first_blue_ship_x
+    else
+        x_position = g_spawn_first_red_ship_x
+    end
+
+    if is_blue_player == true then
+        z_position = g_spawn_first_blue_ship_z
+    else
+        z_position = g_spawn_first_red_ship_z
+    end
+
+local obj = spawnObject({
+    type = 'Custom_AssetBundle',
+    position = { x = x_position, y = g_spawn_ship_y, z = z_position},
+    rotation = { x = 0, y = y_rotation, z = 0},
+    scale = { x = 1, y = 1, z = 1},
+    sound = false,
+    snap_to_grid = false
+ })
+ 
+ obj.setCustomObject({
+    assetbundle = fleets[g_nationality][class]["url"]
+})
+obj.setName(fleets[g_nationality][class]['name'] .. ' #' .. global_id_counter)
+print_info('spawn obj' .. obj.getName())
+global_id_counter = global_id_counter + 1
+end
+
+--TODO review spawn base below
+
 function spawn_base(base, pos, y_rotation, is_red_player, command_color)
     print_debug('Spawning base #' .. g_base_index)
     local overriden_tex = nil
@@ -137,14 +183,4 @@ function spawn_base(base, pos, y_rotation, is_red_player, command_color)
 
     base_obj.setRotation({0, y_rotation, 0})
     base_obj.auto_raise = false
-end
-
-function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected, frigates_rates_selected,brigs_rates_selected,is_blue_player,command_color)
-    --function spawn_army(army_name, army, is_red_player, command_color)
-    math.randomseed(os.time())
-    
-    local y_rotation = 0
-    if not is_blue_player then
-        y_rotation = 180
-    end
 end

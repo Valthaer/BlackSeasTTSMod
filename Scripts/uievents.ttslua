@@ -4,7 +4,7 @@ g_first_rates_selected = 0
 g_third_rates_selected = 0
 g_frigates_rates_selected = 0
 g_brigs_rates_selected = 0
-g_nation_selected = 0
+g_nation_selected = 'Britain'
 g_player_color_selected = 'Blue'
 g_command_color_selected = 'Blue'
 
@@ -154,10 +154,7 @@ function deploy_fleet(player, value, id)
         UI.setAttribute('panel_bs_fleet_selection_bg', 'visibility', player.color)
         UI.setAttribute('panel_bs_fleet_selection', 'active', true)
         UI.setAttribute('panel_bs_fleet_selection', 'visibility', player.color)
-        UI.setAttribute('button_deploy_fleet', 'interactable', false)
-        on_next_frame(function()           
-            update_player_color_menu(g_player_color_selected == 'Blue') 
-        end)
+        UI.setAttribute('button_deploy_fleet', 'interactable', false)        
     end)
 end
 
@@ -227,12 +224,4 @@ function on_deploy_fleet(player, value, id)
     print_debug('Command color: ' .. g_command_color_selected)  
 
     spawn_fleet(g_nation_selected, g_first_rates_selected, g_third_rates_selected, g_frigates_rates_selected,g_brigs_rates_selected,g_player_color_selected,g_command_color_selected)
-end
-
-function update_player_color_menu(is_player_blue)
-    local selected = 1
-    if is_player_blue then
-        selected = 2
-    end
-    set_options_dropdown_by_id('dropdown_playercolor', { 'Red', 'Blue' },  selected)
 end

@@ -1,5 +1,23 @@
 
- ship_data_british_1stRate = {
-    name = "Ship British 1stRate",
-    url = "http://cloud-3.steamusercontent.com/ugc/1664601739753178843/380EDD042A4124BBC895C3383B92F7F91DEA9A5D/",
+ 
+ fleets["British"] = {}
+
+ fleets["British"]["1stRate"] = {
+   name = "British 1stRate",
+   url = "http://cloud-3.steamusercontent.com/ugc/1664601739753178843/380EDD042A4124BBC895C3383B92F7F91DEA9A5D/"
+ }
+
+ fleets["British"]["2thRate"] = {
+   name = "British 2thRate",
+   url = "http://cloud-3.steamusercontent.com/ugc/1664601739758009353/6E556E561D43B9FF9017DAC8AE47BDF58768DC78/"
+ }
+
+ fleets["British"]["3thRate"] = {
+   name = "British 3thRate",
+   url = "http://cloud-3.steamusercontent.com/ugc/1681493480957598880/F4204F51D8028FD94ABC5CB4EFCE57FE923B4BF6/"
+ }
+
+ fleets["British"]["4thRate"] = {
+   name = "British 4thRate",
+   url = "http://cloud-3.steamusercontent.com/ugc/1681493480957602529/9640CCEFDC91D6EED0EDE9EC91F750705C75481C/"
  }

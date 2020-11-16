@@ -1,9 +1,9 @@
 -- UI state globals
 g_knots_movement = 3
-g_first_rates_selected = 0
-g_third_rates_selected = 0
-g_frigates_rates_selected = 0
-g_brigs_rates_selected = 0
+g_first_rates_selected = '0'
+g_third_rates_selected = '0'
+g_frigates_rates_selected = '0'
+g_brigs_rates_selected = '0'
 g_nation_selected = 'Britain'
 g_player_color_selected = 'Blue'
 g_command_color_selected = 'Blue'

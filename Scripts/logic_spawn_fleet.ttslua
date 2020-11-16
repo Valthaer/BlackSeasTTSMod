@@ -1,6 +1,8 @@
-g_ships_index = 1
 global_id_counter = 1
 g_ships = {}
+g_x_spawn_new_ship = 0
+g_x_position = 0
+g_z_position = 0
 
 function add_context_menu_base(base_obj)
     --Nothing to add
@@ -10,14 +12,27 @@ function add_context_menu_table(table_obj)
     --Nothing to add
 end
 
-function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected, frigates_rates_selected,brigs_rates_selected,player_color_selected,command_color)
-    --function spawn_army(army_name, army, is_red_player, command_color)
+function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected, frigates_rates_selected,brigs_rates_selected,player_color_selected,command_color)    
     math.randomseed(os.time())
     
     if player_color_selected == 'Blue' then
         is_blue_player = true
     else 
         is_blue_player = false
+    end
+
+    if is_blue_player == true then
+        g_x_position = g_spawn_first_blue_ship_x
+    else
+        g_x_position = g_spawn_first_red_ship_x
+    end
+
+    g_x_spawn_new_ship = g_x_position
+
+    if is_blue_player == true then
+        g_z_position = g_spawn_first_blue_ship_z
+    else
+        g_z_position = g_spawn_first_red_ship_z
     end
 
     g_nationality = 'British'
@@ -31,35 +46,69 @@ function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected
         g_nationality = 'British'
     elseif nation_selected == 'France' then
         g_nationality = 'French'
+    elseif nation_selected == 'Spain' then
+        g_nationality = 'Spanish'
+    elseif nation_selected == 'United States of America' then
+        g_nationality = 'American'
+    elseif nation_selected == 'Pirates' then
+        g_nationality = 'Pirate'
+    elseif nation_selected == 'Dutch' then
+        g_nationality = 'Dutch'
     end
-    --TODO complete all nationalities
-
 
     print_debug('Deploying 1st Rates: ' .. first_rates_selected)  
-    if first_rates_selected == '1' then
-        spawn_ship(g_nationality,"1stRate",y_rotation,is_blue_player,command_color)
-        --TODO
+    if first_rates_selected > '0' then
+        for i = 1,first_rates_selected, 1
+        do            
+            UpdateXPosition(is_blue_player)           
+            spawn_ship(g_nationality,"1stRate",y_rotation,g_z_position,g_x_position,is_blue_player,command_color,i)
+        end        
+    end
+
+    print_debug('Deploying 3th Rates: ' .. third_rates_selected)  
+    if third_rates_selected > '0' then
+        for i = 1,third_rates_selected, 1
+        do
+            UpdateXPosition(is_blue_player)
+            spawn_ship(g_nationality,"3thRate",y_rotation,g_z_position,g_x_position,is_blue_player,command_color,i)
+        end        
+    end
+
+    print_debug('Deploying 5th Frigates: ' .. frigates_rates_selected)  
+    if frigates_rates_selected > '0' then
+        for i = 1,frigates_rates_selected, 1
+        do
+            UpdateXPosition(is_blue_player)
+            spawn_ship(g_nationality,"Frigate_5th_Rate",y_rotation,g_z_position,g_x_position,is_blue_player,command_color,i)
+        end        
+    end
+
+    print_debug('Deploying Brigs: ' .. brigs_rates_selected)  
+    if brigs_rates_selected > '0' then
+        for i = 1,brigs_rates_selected, 1
+        do
+            UpdateXPosition(is_blue_player)
+            spawn_ship(g_nationality,"Brig",y_rotation,g_z_position,g_x_position,is_blue_player,command_color,i)
+        end        
     end
 
 end
 
-function spawn_ship(g_nationality,class,y_rotation,is_blue_player,command_color)
-
+function UpdateXPosition(is_blue_player)
+    
     if is_blue_player == true then
-        x_position = g_spawn_first_blue_ship_x
+        g_x_position = g_x_position + g_base_width_inches + 1
     else
-        x_position = g_spawn_first_red_ship_x
+        g_x_position = g_x_position - g_base_width_inches - 1
     end
+    
+end
 
-    if is_blue_player == true then
-        z_position = g_spawn_first_blue_ship_z
-    else
-        z_position = g_spawn_first_red_ship_z
-    end
+function spawn_ship(g_nationality,class,y_rotation,g_z_position,g_x_position,is_blue_player,command_color,number)   
 
 local obj = spawnObject({
     type = 'Custom_AssetBundle',
-    position = { x = x_position, y = g_spawn_ship_y, z = z_position},
+    position = { x = g_x_position, y = g_spawn_ship_y, z = g_z_position},
     rotation = { x = 0, y = y_rotation, z = 0},
     scale = { x = 1, y = 1, z = 1},
     sound = false,
@@ -69,118 +118,7 @@ local obj = spawnObject({
  obj.setCustomObject({
     assetbundle = fleets[g_nationality][class]["url"]
 })
-obj.setName(fleets[g_nationality][class]['name'] .. ' #' .. global_id_counter)
+obj.setName(fleets[g_nationality][class]['name'] .. ' #' .. number)
 print_info('spawn obj' .. obj.getName())
 global_id_counter = global_id_counter + 1
-end
-
---TODO review spawn base below
-
-function spawn_base(base, pos, y_rotation, is_red_player, command_color)
-    print_debug('Spawning base #' .. g_base_index)
-    local overriden_tex = nil
-    if base['ignore_terrain'] == nil then
-        local type = from_toggle_number_to_table_type(g_current_table_type)
-
-        if tables[type] == nil then
-            type = 'grass'
-        end
-
-        if is_red_player then
-            overriden_tex = tables[type]['red_player_base_tex']
-        else
-            overriden_tex = tables[type]['blue_player_base_tex']
-        end
-    end
-
-    if base['name'] == nil then
-        print_error('One of the bases of this army has no name! Please report to us so we can fix it asap')
-        return
-    end
-    local base_obj = spawn_model(base['base'], pos, 0, nil, is_red_player, overriden_tex)
-
-    local base_name = 'base ' .. base['name'] .. ' #' .. g_base_index
-    base_obj.setName(base_name)
-    add_context_menu_base(base_obj)
-
-    g_base_index = g_base_index + 1
-    g_bases[base_name] = {
-        tile = base['base'],
-        is_red_player = is_red_player
-    }
-
-    if command_color ~= 'None' then
-        if command_color == 'Orange' then
-            base_obj.highlightOn({r=1,g=0.5,b=0}, 86400)
-        elseif command_color == 'Yellow' then
-            base_obj.highlightOn({r=1,g=1,b=0}, 86400)
-        elseif command_color == 'Green' then
-            base_obj.highlightOn({r=0.1,g=1,b=0.4}, 86400)
-        elseif command_color == 'Purple' then
-            base_obj.highlightOn({r=0.3,g=0,b=0.7}, 86400)
-        end
-    end
-
-    local n = base['n_models']
-    if n == 0 then
-        base_obj.setRotation({0, y_rotation, 0})
-        base_obj.auto_raise = false
-        return
-    end
-
-    local depth = get_depth_base(base['base'])
-    local half_depth = depth / 2
-    local half_width = g_base_width_inches / 2
-
-    local rows = 1
-    local columns = n
-    if n > 4 then
-        rows = math.floor(math.sqrt(n))
-        columns = math.ceil(n/rows)
-
-    end
-    local column_width = g_base_width_inches / (columns + 1)
-    local row_depth = depth / (rows + 1)
-
-    local model_name = base['model_data']
-    local meshes = {}
-
-    if model_name ~= nil then
-        meshes = calculate_random_meshes(n, _G[model_name]['mesh'])
-    end
-
-    for i=1,n do
-        local column = (i - 1) % columns + 1
-        local row = math.floor((i - 1) / columns) + 1
-
-        local random_rotation = math.random(-20, 20)
-        local random_rotation = math.random(0, 40) - 20
-        if str_has_substr(base_name, 'Camp') then
-            random_rotation = 0
-        end
-
-        local random_x = 0
-        local random_z = 0
-        if base['loose'] == true then
-            random_x = random_float(-g_max_loose_spawn, g_max_loose_spawn)
-            random_z = random_float(-g_max_loose_spawn, g_max_loose_spawn)
-        end
-
-        local relative_pos = {
-            x = pos['x'] + column * column_width - half_width + random_x,
-            y = pos['y'] + g_base_height_inches / 2,
-            z = pos['z'] + row * row_depth - half_depth + random_x
-        }
-
-        local this_model_name = model_name
-        if this_model_name == nil then
-            this_model_name = base['fixed_models'][i]
-            meshes[i] = random_element(_G[this_model_name]['mesh'])
-        end
-        local soldier_obj = spawn_model(this_model_name, relative_pos, random_rotation, minimal_collider, is_red_player, nil, meshes[i])
-        base_obj.addAttachment(soldier_obj)
-    end
-
-    base_obj.setRotation({0, y_rotation, 0})
-    base_obj.auto_raise = false
 end

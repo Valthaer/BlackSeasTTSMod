@@ -21,3 +21,14 @@
    name = "British 4thRate",
    url = "http://cloud-3.steamusercontent.com/ugc/1681493480957602529/9640CCEFDC91D6EED0EDE9EC91F750705C75481C/"
  }
+
+ fleets["British"]["Frigate_5th_Rate"] = {
+  name = "British Frigate 5th Rate",
+  url = "http://cloud-3.steamusercontent.com/ugc/1681493865327727446/1044C87A870B55753E4D50B303F9BB0740464EF5/"
+}
+
+fleets["British"]["Brig"] = {
+  name = "British Brig",
+  url = "http://cloud-3.steamusercontent.com/ugc/1681493865327730222/0E3D3EC6D46D22D8ED9CCB5613BA6C5B88CBE255/"
+}
+

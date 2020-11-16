@@ -104,12 +104,11 @@
             <Cell columnSpan="14" dontUseTableCellBackground="true">
                 <Dropdown id="dropdown_nation" onValueChanged="on_nation_selected" fontSize="16">
                     <Option selected="true">Britain</Option>
-                    <Option>Dutch</Option>
                     <Option>France</Option>
-                    <Option>Pirates</Option>
                     <Option>Spain</Option>
-                    <Option>Sweden</Option>
-                    <Option>United States of America</Option>                    
+                    <Option>United States of America</Option>                                                            
+                    <Option>Pirates</Option>
+                    <Option>Dutch</Option>
                 </Dropdown>
             </Cell>
         </Row>

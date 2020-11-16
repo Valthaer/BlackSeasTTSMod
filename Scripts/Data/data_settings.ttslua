@@ -18,5 +18,5 @@ g_spawn_first_red_ship_z = 22.87
 g_spawn_ship_y = 13
 
 -- Fleets
-fleets = {"British", "Spanish", "French", "Dutch", "North American", "Danish","Swedish","Pirates"}
+fleets = {"British", "Spanish", "French", "Dutch", "American", "Pirates"}
 

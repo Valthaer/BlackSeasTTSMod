@@ -3,6 +3,8 @@ g_ships = {}
 g_x_spawn_new_ship = 0
 g_x_position = 0
 g_z_position = 0
+g_x_card_position = 0
+g_z_card_position = 0
 
 function add_context_menu_base(base_obj)
     --Nothing to add
@@ -23,16 +25,20 @@ function spawn_fleet(nation_selected, first_rates_selected, third_rates_selected
 
     if is_blue_player == true then
         g_x_position = g_spawn_first_blue_ship_x
+        g_x_card_position = g_spawn_first_blue_ship_x
     else
         g_x_position = g_spawn_first_red_ship_x
+        g_x_card_position = g_spawn_first_red_ship_x
     end
 
     g_x_spawn_new_ship = g_x_position
 
     if is_blue_player == true then
         g_z_position = g_spawn_first_blue_ship_z
+        g_z_card_position = g_spawn_first_blue_ship_z - g_base_long_inches - 1
     else
         g_z_position = g_spawn_first_red_ship_z
+        g_z_card_position = g_spawn_first_red_ship_z + g_base_long_inches + 1
     end
 
     g_nationality = 'British'
@@ -98,27 +104,46 @@ function UpdateXPosition(is_blue_player)
     
     if is_blue_player == true then
         g_x_position = g_x_position + g_base_width_inches + 1
+        g_x_card_position = g_x_card_position + g_card_length_inches + 1
     else
         g_x_position = g_x_position - g_base_width_inches - 1
+        g_x_card_position = g_x_card_position - g_card_length_inches - 1
     end
     
 end
 
 function spawn_ship(g_nationality,class,y_rotation,g_z_position,g_x_position,is_blue_player,command_color,number)   
+    
+    --Ship miniature
+    local objShip = spawnObject({
+        type = 'Custom_AssetBundle',
+        position = { x = g_x_position, y = g_spawn_ship_y, z = g_z_position},
+        rotation = { x = 0, y = y_rotation, z = 0},
+        scale = { x = 1, y = 1, z = 1},
+        sound = false,
+        snap_to_grid = false
+     })
+     
+    objShip.setCustomObject({
+        assetbundle = fleets[g_nationality][class]["url"]
+    })
+    objShip.setName(fleets[g_nationality][class]['name'] .. ' #' .. number)
 
-local obj = spawnObject({
-    type = 'Custom_AssetBundle',
-    position = { x = g_x_position, y = g_spawn_ship_y, z = g_z_position},
-    rotation = { x = 0, y = y_rotation, z = 0},
-    scale = { x = 1, y = 1, z = 1},
-    sound = false,
-    snap_to_grid = false
- })
- 
- obj.setCustomObject({
-    assetbundle = fleets[g_nationality][class]["url"]
-})
-obj.setName(fleets[g_nationality][class]['name'] .. ' #' .. number)
-print_info('spawn obj' .. obj.getName())
-global_id_counter = global_id_counter + 1
+    print_info('Created ship ' .. objShip.getName())
+    --Ship card
+    local objCard = spawnObject({
+        type = 'Custom_Tile',
+        position = { x = g_x_card_position, y = g_spawn_ship_y, z = g_z_card_position},
+        rotation = { x = 0, y = y_rotation, z = 0},
+        scale = { x = 3, y = 1, z = 3},        
+        sound = false,
+        snap_to_grid = false
+    })
+
+    objCard.setCustomObject({image = fleets[g_nationality][class]["card"],image_bottom = "",type = '0'})
+
+    objCard.setName(fleets[g_nationality][class]['name'] .. ' #' .. number)
+
+    global_id_counter = global_id_counter + 1
+
 end

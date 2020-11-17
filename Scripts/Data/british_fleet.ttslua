@@ -4,17 +4,19 @@
 
  fleets["British"]["1stRate"] = {
    name = "British 1stRate",
-   url = "http://cloud-3.steamusercontent.com/ugc/1664601739753178843/380EDD042A4124BBC895C3383B92F7F91DEA9A5D/"
+   url = "http://cloud-3.steamusercontent.com/ugc/1664601739753178843/380EDD042A4124BBC895C3383B92F7F91DEA9A5D/",
+   card = "http://cloud-3.steamusercontent.com/ugc/1681493986782550203/76C999515A0D558C5F08817FAD37DB030D6E9E56/"
  }
 
  fleets["British"]["2thRate"] = {
    name = "British 2thRate",
-   url = "http://cloud-3.steamusercontent.com/ugc/1664601739758009353/6E556E561D43B9FF9017DAC8AE47BDF58768DC78/"
+   url = "http://cloud-3.steamusercontent.com/ugc/1664601739758009353/6E556E561D43B9FF9017DAC8AE47BDF58768DC78/"   
  }
 
  fleets["British"]["3thRate"] = {
    name = "British 3thRate",
-   url = "http://cloud-3.steamusercontent.com/ugc/1681493480957598880/F4204F51D8028FD94ABC5CB4EFCE57FE923B4BF6/"
+   url = "http://cloud-3.steamusercontent.com/ugc/1681493480957598880/F4204F51D8028FD94ABC5CB4EFCE57FE923B4BF6/",
+   card = "http://cloud-3.steamusercontent.com/ugc/1681493986782592402/4039EA0AFA644D91B0EF479B239EFAC236121EDE/"
  }
 
  fleets["British"]["4thRate"] = {
@@ -24,11 +26,13 @@
 
  fleets["British"]["Frigate_5th_Rate"] = {
   name = "British Frigate 5th Rate",
-  url = "http://cloud-3.steamusercontent.com/ugc/1681493865327727446/1044C87A870B55753E4D50B303F9BB0740464EF5/"
+  url = "http://cloud-3.steamusercontent.com/ugc/1681493865327727446/1044C87A870B55753E4D50B303F9BB0740464EF5/",
+  card = "http://cloud-3.steamusercontent.com/ugc/1681493986782595271/4A0046E9017CF26FC0F2E37824D504E4FB686F1A/"
 }
 
 fleets["British"]["Brig"] = {
   name = "British Brig",
-  url = "http://cloud-3.steamusercontent.com/ugc/1681493865327730222/0E3D3EC6D46D22D8ED9CCB5613BA6C5B88CBE255/"
+  url = "http://cloud-3.steamusercontent.com/ugc/1681493865327730222/0E3D3EC6D46D22D8ED9CCB5613BA6C5B88CBE255/",
+  card = "http://cloud-3.steamusercontent.com/ugc/1681493986782605915/AEAD14F74F0AF3C8011F4FD7E129AE8FC2852CAF/"
 }
 

@@ -4,6 +4,9 @@ g_base_width_inches = 2.5
 -- All bases have 16cm longitude
 g_base_long_inches = 6
 
+-- Ship profile card
+g_card_length_inches = 8.6
+
 -- How thick the lines for the gizmos are
 g_line_thickness = 0.05
 
@@ -14,7 +17,7 @@ g_seconds_main_loop = 0.5
 g_spawn_first_blue_ship_x = -11.54
 g_spawn_first_blue_ship_z = -31.87
 g_spawn_first_red_ship_x = 58.77
-g_spawn_first_red_ship_z = 22.87
+g_spawn_first_red_ship_z = 22.2
 g_spawn_ship_y = 13
 
 -- Fleets
